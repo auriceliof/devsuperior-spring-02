@@ -42,8 +42,7 @@ public class ProductRepositoryTests {
 		Optional<Product> result = repository.findById(nonExistingId);
 		Assertions.assertTrue(result.isEmpty());
 	}
-	
-	
+		
 	@Test
 	public void saveShouldPersistWithAutoincrementWhenIdIsNull(){
 		
@@ -73,13 +72,3 @@ public class ProductRepositoryTests {
 		});
 	}
 } 
-
-
-
-
-
-
-
-
-
-
