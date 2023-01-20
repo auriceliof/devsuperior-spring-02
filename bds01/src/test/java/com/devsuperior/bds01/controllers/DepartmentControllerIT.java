@@ -34,3 +34,4 @@ public class DepartmentControllerIT {
 		result.andExpect(jsonPath("$[2].name").value("Training"));
 	}
 }
+
