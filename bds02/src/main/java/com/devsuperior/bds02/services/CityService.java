@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.devsuperior.bds02.dto.CityDTO;
 import com.devsuperior.bds02.entities.City;
 import com.devsuperior.bds02.repositories.CityRepository;
+import com.devsuperior.bds02.services.exceptions.BadRequest;
 import com.devsuperior.bds02.services.exceptions.NotFound;
 
 
@@ -41,6 +43,9 @@ public class CityService {
 		}
 		catch (EmptyResultDataAccessException e) {
 			throw new NotFound("Id not found " + id);
+		}
+		catch (DataIntegrityViolationException e) {
+			throw new BadRequest("Integrity violation");
 		}
 	}
 }
